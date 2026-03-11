@@ -252,7 +252,7 @@
     <div id="jobsList"></div>
   </div>
 
-  <footer>Powered by Claude AI · Always verify listings on the original platform</footer>
+  <footer>Powered by Gemini AI + Google Search · Free · Always verify listings on the original platform</footer>
 </div>
 </div>
 
@@ -382,7 +382,7 @@ document.querySelectorAll('[data-age]').forEach(btn => {
 // ║  WORKER CALL                                         ║
 // ╚══════════════════════════════════════════════════════╝
 async function callWorker(prompt, useSearch = false) {
-  if (WORKER_URL === 'https://soft-mouse-c981.k098-aditya.workers.dev/L') {
+  if (WORKER_URL === 'YOUR_WORKER_URL') {
     throw new Error('Paste your Cloudflare Worker URL into WORKER_URL at the top of the script.');
   }
   const res = await fetch(WORKER_URL, {
