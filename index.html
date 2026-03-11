@@ -18,159 +18,130 @@
   body::before { content:''; position:fixed; top:-40%; left:-20%; width:80vw; height:80vw; background:radial-gradient(circle,rgba(108,99,255,0.07),transparent 60%); pointer-events:none; z-index:0; }
   body::after  { content:''; position:fixed; bottom:-30%; right:-10%; width:60vw; height:60vw; background:radial-gradient(circle,rgba(255,101,132,0.05),transparent 60%); pointer-events:none; z-index:0; }
 
-  /* ── Screens ── */
-  .screen { display:none; min-height:100vh; }
-  .screen.active { display:block; }
-  #accessDeniedScreen { display:none; min-height:100vh; align-items:center; justify-content:center; padding:24px; }
-  #accessDeniedScreen.active { display:flex; }
-
-  /* ── Container ── */
   .container { max-width:1000px; margin:0 auto; padding:0 24px; position:relative; z-index:1; }
-
-  /* ── Header ── */
   header { padding:28px 0 16px; display:flex; align-items:center; gap:12px; }
   .logo { font-family:'Syne',sans-serif; font-weight:800; font-size:22px; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
   .beta-tag { font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent3); border:1px solid rgba(67,233,123,0.3); padding:2px 8px; border-radius:99px; }
-
-  /* ── Hero ── */
-  .hero { padding:44px 0 36px; text-align:center; }
-  .hero h1 { font-family:'Syne',sans-serif; font-size:clamp(34px,5.5vw,56px); font-weight:800; line-height:1.1; margin-bottom:14px; }
+  .hero { padding:44px 0 32px; text-align:center; }
+  .hero h1 { font-family:'Syne',sans-serif; font-size:clamp(32px,5.5vw,54px); font-weight:800; line-height:1.1; margin-bottom:12px; }
   .hero h1 span { background:linear-gradient(135deg,#6c63ff,#ff6584); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-  .hero p { color:var(--muted); font-size:16px; font-weight:300; max-width:500px; margin:0 auto; line-height:1.6; }
-
-  /* ── Cards ── */
-  .card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:28px 32px; margin-bottom:20px; transition:border-color 0.2s; }
+  .hero p { color:var(--muted); font-size:15px; font-weight:300; max-width:480px; margin:0 auto; line-height:1.6; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:26px 30px; margin-bottom:18px; transition:border-color 0.2s; }
   .card:hover { border-color:rgba(108,99,255,0.3); }
-  .section-label { font-family:'Syne',sans-serif; font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+  .section-label { font-family:'Syne',sans-serif; font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:16px; display:flex; align-items:center; gap:10px; }
   .section-label::after { content:''; flex:1; height:1px; background:var(--border); }
 
-  /* ── Upload Zone ── */
-  .upload-zone { border:2px dashed var(--border); border-radius:14px; padding:36px 24px; text-align:center; cursor:pointer; transition:all 0.3s; position:relative; overflow:hidden; }
-  .upload-zone:hover, .upload-zone.dragover { border-color:var(--accent); background:rgba(108,99,255,0.05); }
+  /* Upload */
+  .upload-zone { border:2px dashed var(--border); border-radius:14px; padding:32px 24px; text-align:center; cursor:pointer; transition:all 0.3s; position:relative; overflow:hidden; }
+  .upload-zone:hover,.upload-zone.dragover { border-color:var(--accent); background:rgba(108,99,255,0.05); }
   .upload-zone input[type="file"] { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
-  .upload-icon { width:52px; height:52px; margin:0 auto 12px; background:rgba(108,99,255,0.15); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:24px; }
-  .upload-zone h3 { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; margin-bottom:5px; }
-  .upload-zone p { color:var(--muted); font-size:13px; }
+  .upload-icon { width:48px; height:48px; margin:0 auto 10px; background:rgba(108,99,255,0.15); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px; }
+  .upload-zone h3 { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; margin-bottom:4px; }
+  .upload-zone p { color:var(--muted); font-size:12px; }
   .file-badge { display:none; align-items:center; gap:10px; background:rgba(67,233,123,0.08); border:1px solid rgba(67,233,123,0.2); border-radius:10px; padding:10px 14px; margin-top:12px; font-size:13px; }
   .file-badge.show { display:flex; }
   .file-badge-name { font-weight:500; color:var(--accent3); flex:1; }
-  .file-badge-remove { cursor:pointer; color:var(--muted); font-size:16px; }
+  .file-badge-remove { cursor:pointer; color:var(--muted); font-size:15px; }
   .file-badge-remove:hover { color:var(--accent2); }
-  .paste-toggle { color:var(--muted); font-size:13px; cursor:pointer; margin-top:14px; display:inline-flex; align-items:center; gap:6px; }
+  .paste-toggle { color:var(--muted); font-size:12px; cursor:pointer; margin-top:12px; display:inline-flex; align-items:center; gap:6px; }
   .paste-toggle:hover { color:var(--accent); }
   textarea.paste-area { display:none; width:100%; margin-top:10px; background:var(--surface2); border:1px solid var(--border); border-radius:12px; padding:12px 14px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:13px; resize:vertical; min-height:90px; outline:none; transition:border-color 0.2s; }
   textarea.paste-area:focus { border-color:var(--accent); }
   textarea.paste-area.show { display:block; }
-  .resume-preview { display:none; background:var(--surface2); border-radius:12px; padding:14px 16px; margin-top:14px; border:1px solid rgba(108,99,255,0.2); }
+  .resume-preview { display:none; background:var(--surface2); border-radius:12px; padding:12px 14px; margin-top:12px; border:1px solid rgba(108,99,255,0.2); }
   .resume-preview.show { display:block; }
-  .resume-preview-label { font-size:11px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
-  .pills { display:flex; flex-wrap:wrap; gap:7px; }
-  .pill { font-size:12px; padding:3px 11px; border-radius:99px; background:rgba(108,99,255,0.12); color:var(--accent); border:1px solid rgba(108,99,255,0.2); }
+  .rp-label { font-size:10px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:1px; margin-bottom:7px; }
+  .pills { display:flex; flex-wrap:wrap; gap:6px; }
+  .pill { font-size:11px; padding:3px 10px; border-radius:99px; background:rgba(108,99,255,0.12); color:var(--accent); border:1px solid rgba(108,99,255,0.2); }
 
-  /* ── Filters ── */
-  .filters-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+  /* Filters */
+  .filters-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
   @media(max-width:640px) { .filters-grid { grid-template-columns:1fr; } }
   .fg label { display:block; font-size:11px; font-weight:500; color:var(--muted); margin-bottom:7px; letter-spacing:0.5px; text-transform:uppercase; }
-  .fg select, .fg input[type="text"] { width:100%; background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:10px 14px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:14px; outline:none; transition:border-color 0.2s; appearance:none; }
-  .fg select:focus, .fg input:focus { border-color:var(--accent); }
+  .fg select,.fg input[type="text"] { width:100%; background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:10px 14px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:13px; outline:none; transition:border-color 0.2s; appearance:none; }
+  .fg select:focus,.fg input:focus { border-color:var(--accent); }
   .fg select option { background:#1a1a24; }
-  .toggles { display:flex; gap:8px; flex-wrap:wrap; }
-  .toggle-btn { padding:8px 15px; border-radius:99px; border:1px solid var(--border); background:transparent; color:var(--muted); font-family:'DM Sans',sans-serif; font-size:13px; cursor:pointer; transition:all 0.2s; }
-  .toggle-btn.active { background:var(--accent); border-color:var(--accent); color:white; font-weight:500; }
-  .platform-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
-  .pchip { padding:5px 13px; border-radius:99px; border:1px solid var(--border); background:var(--surface2); color:var(--muted); font-size:12px; font-weight:500; cursor:pointer; transition:all 0.2s; display:flex; align-items:center; gap:5px; }
-  .pchip .dot { width:5px; height:5px; border-radius:50%; background:var(--accent); display:none; }
-  .pchip.on { border-color:rgba(108,99,255,0.5); background:rgba(108,99,255,0.1); color:var(--accent); }
-  .pchip.on .dot { display:block; }
+  .toggles { display:flex; gap:6px; flex-wrap:wrap; }
+  .tbtn { padding:7px 13px; border-radius:99px; border:1px solid var(--border); background:transparent; color:var(--muted); font-family:'DM Sans',sans-serif; font-size:12px; cursor:pointer; transition:all 0.2s; white-space:nowrap; }
+  .tbtn.active { background:var(--accent); border-color:var(--accent); color:white; font-weight:500; }
 
-  /* ── CTA Button ── */
-  .search-btn { width:100%; padding:16px; background:linear-gradient(135deg,var(--accent),#8b5cf6); border:none; border-radius:14px; color:white; font-family:'Syne',sans-serif; font-size:17px; font-weight:700; cursor:pointer; transition:all 0.3s; }
+  /* CTA */
+  .search-btn { width:100%; padding:15px; background:linear-gradient(135deg,var(--accent),#8b5cf6); border:none; border-radius:14px; color:white; font-family:'Syne',sans-serif; font-size:16px; font-weight:700; cursor:pointer; transition:all 0.3s; }
   .search-btn:hover { transform:translateY(-2px); box-shadow:0 12px 40px rgba(108,99,255,0.35); }
   .search-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; box-shadow:none; }
 
-  /* ── Loading ── */
-  .loading { display:none; text-align:center; padding:56px 24px; }
+  /* Loading */
+  .loading { display:none; text-align:center; padding:52px 24px; }
   .loading.show { display:block; }
-  .spinner { width:46px; height:46px; border:3px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; margin:0 auto 18px; }
+  .spinner { width:44px; height:44px; border:3px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; margin:0 auto 16px; }
   @keyframes spin { to { transform:rotate(360deg); } }
-  .load-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:8px; }
-  .steps { list-style:none; display:inline-flex; flex-direction:column; gap:9px; text-align:left; margin-top:14px; }
-  .step { color:var(--muted); font-size:13px; display:flex; align-items:center; gap:9px; }
+  .load-title { font-family:'Syne',sans-serif; font-size:17px; font-weight:700; margin-bottom:6px; }
+  .steps { list-style:none; display:inline-flex; flex-direction:column; gap:8px; text-align:left; margin-top:12px; }
+  .step { color:var(--muted); font-size:13px; display:flex; align-items:center; gap:8px; }
   .step.active { color:var(--accent); }
   .step.done { color:var(--accent3); }
 
-  /* ── Error ── */
-  .error { display:none; background:rgba(255,101,132,0.08); border:1px solid rgba(255,101,132,0.25); border-radius:12px; padding:16px 20px; color:#ff6584; font-size:14px; margin-top:14px; }
+  /* Error */
+  .error { display:none; background:rgba(255,101,132,0.08); border:1px solid rgba(255,101,132,0.25); border-radius:12px; padding:14px 18px; color:#ff6584; font-size:13px; margin-top:12px; line-height:1.5; }
   .error.show { display:block; }
 
-  /* ── Results ── */
-  .results { display:none; padding-top:8px; }
+  /* Results */
+  .results { display:none; padding-top:6px; }
   .results.show { display:block; }
-  .results-hdr { display:flex; align-items:center; gap:12px; margin-bottom:18px; }
-  .results-hdr h2 { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; flex:1; }
-  .results-count { background:rgba(108,99,255,0.15); color:var(--accent); padding:4px 12px; border-radius:99px; font-size:13px; font-weight:600; }
+  .results-hdr { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+  .results-hdr h2 { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; flex:1; }
+  .results-count { background:rgba(108,99,255,0.15); color:var(--accent); padding:3px 11px; border-radius:99px; font-size:12px; font-weight:600; }
 
-  /* ── Job Card ── */
-  .job-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px; margin-bottom:12px; transition:all 0.25s; animation:fadeUp 0.35s ease both; }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+  /* Job Card */
+  .job-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px; margin-bottom:12px; transition:all 0.25s; animation:fadeUp 0.35s ease both; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
   .job-card:hover { border-color:rgba(108,99,255,0.35); transform:translateY(-2px); }
-  .job-top { display:flex; justify-content:space-between; align-items:flex-start; gap:14px; margin-bottom:12px; }
-  .job-logo { width:42px; height:42px; border-radius:10px; background:var(--surface2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
-  .job-info { flex:1; }
-  .job-title { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; margin-bottom:3px; line-height:1.3; }
-  .job-company { font-size:13px; color:var(--muted); }
-  .pbadge { font-size:10px; font-weight:700; padding:3px 9px; border-radius:99px; letter-spacing:0.5px; text-transform:uppercase; flex-shrink:0; }
-  .pb-indeed     { background:rgba(45,94,255,0.15);  color:#5b8fff; }
-  .pb-linkedin   { background:rgba(0,119,181,0.15);  color:#4da6d0; }
-  .pb-naukri     { background:rgba(255,100,50,0.15); color:#ff8c6a; }
-  .pb-internshala{ background:rgba(67,233,123,0.12); color:#43e97b; }
-  .pb-glassdoor  { background:rgba(100,210,120,0.12);color:#64d278; }
-  .pb-wellfound  { background:rgba(255,101,132,0.12);color:#ff6584; }
-  .pb-other      { background:rgba(150,150,180,0.12);color:#9696b4; }
-  .job-meta { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
-  .chip { display:flex; align-items:center; gap:4px; font-size:12px; color:var(--muted); background:var(--surface2); padding:3px 9px; border-radius:6px; }
-  .chip.green { color:var(--accent3); background:rgba(67,233,123,0.08); }
-  .chip.purple{ color:var(--accent);  background:rgba(108,99,255,0.1); }
-  .job-desc { font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:12px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-  .skill-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:14px; }
-  .stag { font-size:11px; padding:3px 8px; border-radius:5px; background:rgba(108,99,255,0.1); color:rgba(180,170,255,0.85); font-weight:500; }
+  .job-top { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:10px; }
+  .job-logo { width:40px; height:40px; border-radius:10px; background:var(--surface2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0; }
+  .job-info { flex:1; min-width:0; }
+  .job-title { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; margin-bottom:2px; line-height:1.3; }
+  .job-company { font-size:12px; color:var(--muted); }
+  .pbadge { font-size:10px; font-weight:700; padding:2px 8px; border-radius:99px; letter-spacing:0.5px; text-transform:uppercase; flex-shrink:0; }
+  .pb-google   { background:rgba(66,133,244,0.15);  color:#6ba3f5; }
+  .pb-indeed   { background:rgba(45,94,255,0.15);   color:#5b8fff; }
+  .pb-linkedin { background:rgba(0,119,181,0.15);   color:#4da6d0; }
+  .pb-naukri   { background:rgba(255,100,50,0.15);  color:#ff8c6a; }
+  .pb-other    { background:rgba(150,150,180,0.12); color:#9696b4; }
+  .job-meta { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:10px; }
+  .chip { display:flex; align-items:center; gap:4px; font-size:11px; color:var(--muted); background:var(--surface2); padding:3px 8px; border-radius:6px; }
+  .chip.green  { color:var(--accent3); background:rgba(67,233,123,0.08); }
+  .chip.purple { color:var(--accent);  background:rgba(108,99,255,0.1); }
+  .chip.new    { color:#ffd166; background:rgba(255,209,102,0.1); }
+  .job-desc { font-size:12px; color:var(--muted); line-height:1.6; margin-bottom:12px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
   .job-footer { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-  .apply-btn { display:inline-flex; align-items:center; gap:7px; padding:8px 18px; background:var(--accent); color:white; border-radius:9px; font-size:13px; font-weight:600; text-decoration:none; transition:all 0.2s; font-family:'DM Sans',sans-serif; }
+  .apply-btn { display:inline-flex; align-items:center; gap:6px; padding:7px 16px; background:var(--accent); color:white; border-radius:8px; font-size:12px; font-weight:600; text-decoration:none; transition:all 0.2s; font-family:'DM Sans',sans-serif; }
   .apply-btn:hover { background:#5a52e0; transform:translateY(-1px); }
-  .posted { font-size:12px; color:var(--muted); margin-left:auto; }
-  .why-fit { margin-top:12px; padding:11px 15px; background:linear-gradient(135deg,rgba(108,99,255,0.08),rgba(255,101,132,0.05)); border-left:3px solid var(--accent); border-radius:0 10px 10px 0; font-size:13px; color:#c4c0e8; line-height:1.6; }
-  .why-fit-lbl { display:block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:4px; }
+  .posted { font-size:11px; color:var(--muted); margin-left:auto; }
+  .why-fit { margin-top:10px; padding:10px 14px; background:linear-gradient(135deg,rgba(108,99,255,0.08),rgba(255,101,132,0.05)); border-left:3px solid var(--accent); border-radius:0 8px 8px 0; font-size:12px; color:#c4c0e8; line-height:1.6; }
+  .why-fit-lbl { display:block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:3px; }
 
-  /* ── Access Denied Card ── */
-  .denied-card { background:var(--card); border:1px solid var(--border); border-radius:24px; padding:48px 40px; max-width:400px; text-align:center; }
-  .denied-card .logo { font-family:'Syne',sans-serif; font-weight:800; font-size:24px; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:14px; }
+  /* Access denied */
+  #accessDeniedScreen { display:none; min-height:100vh; align-items:center; justify-content:center; padding:24px; }
+  #accessDeniedScreen.show { display:flex; }
+  .denied-card { background:var(--card); border:1px solid var(--border); border-radius:24px; padding:44px 38px; max-width:380px; text-align:center; }
 
-  footer { text-align:center; padding:36px 0 28px; color:var(--muted); font-size:12px; }
+  footer { text-align:center; padding:32px 0 24px; color:var(--muted); font-size:11px; }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════
-     ACCESS DENIED SCREEN
-     (only shown when ALLOWLIST_ENABLED = true
-      and user's email is not in the list)
-════════════════════════════════════════════ -->
+<!-- Access Denied Screen -->
 <div id="accessDeniedScreen">
   <div class="denied-card">
-    <div style="font-size:40px;margin-bottom:12px">🔒</div>
-    <div class="logo">ResumeMatch.</div>
-    <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;margin-bottom:8px">Access Restricted</h3>
-    <p style="color:var(--muted);font-size:14px;line-height:1.6">
-      This tool is currently in private beta.<br>
-      Contact the owner to request access.
-    </p>
+    <div style="font-size:38px;margin-bottom:10px">🔒</div>
+    <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px">ResumeMatch.</div>
+    <h3 style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;margin-bottom:8px">Access Restricted</h3>
+    <p style="color:var(--muted);font-size:13px;line-height:1.6">This tool is currently in private beta.<br>Contact the owner to request access.</p>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     MAIN APP
-════════════════════════════════════════════ -->
-<div id="appScreen" class="screen active">
+<!-- Main App -->
+<div id="appScreen">
 <div class="container">
 
   <header>
@@ -180,42 +151,38 @@
 
   <div class="hero">
     <h1>Find Jobs That <span>Match You</span></h1>
-    <p>Upload your resume and get AI-matched job listings with personalised reasons why each role fits you.</p>
+    <p>Searches real Google Jobs listings and ranks them using AI based on your profile.</p>
   </div>
 
-  <!-- Resume Upload -->
+  <!-- Resume Upload — optional -->
   <div class="card">
-    <div class="section-label">Your Resume</div>
+    <div class="section-label">Resume <span style="font-size:10px;font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;margin-left:4px;color:var(--muted)">— optional, improves AI matching</span></div>
     <div class="upload-zone" id="uploadZone">
       <input type="file" id="resumeFile" accept=".pdf,.txt,.doc,.docx">
       <div class="upload-icon">📄</div>
       <h3>Drop your resume here</h3>
-      <p>PDF, DOCX, DOC or TXT · Max 5MB</p>
+      <p>PDF · DOCX · DOC · TXT · Max 5MB · Optional</p>
     </div>
     <div class="file-badge" id="fileBadge">
-      <span style="font-size:18px">📎</span>
+      <span style="font-size:17px">📎</span>
       <span class="file-badge-name" id="fileName"></span>
       <span class="file-badge-remove" id="removeFile">✕</span>
     </div>
     <div class="paste-toggle" id="pasteToggle">↕ Or paste resume text instead</div>
     <textarea class="paste-area" id="pasteArea" placeholder="Paste your resume content here..."></textarea>
     <div class="resume-preview" id="resumePreview">
-      <div class="resume-preview-label">Extracted from resume</div>
+      <div class="rp-label">Detected from resume</div>
       <div class="pills" id="resumePills"></div>
     </div>
   </div>
 
   <!-- Filters -->
   <div class="card">
-    <div class="section-label">Preferences</div>
+    <div class="section-label">Search Criteria</div>
     <div class="filters-grid">
       <div class="fg">
-        <label>Type</label>
-        <div class="toggles">
-          <button class="toggle-btn active" data-type="job">Full-time</button>
-          <button class="toggle-btn" data-type="internship">Internship</button>
-          <button class="toggle-btn" data-type="both">Both</button>
-        </div>
+        <label>Keywords <span style="font-style:italic;font-weight:300;text-transform:none;letter-spacing:0">(required if no resume)</span></label>
+        <input type="text" id="keywords" placeholder="e.g. Supply Chain, Kinaxis, MBA">
       </div>
       <div class="fg">
         <label>Location</label>
@@ -224,7 +191,7 @@
       <div class="fg">
         <label>Experience</label>
         <select id="expLevel">
-          <option value="any">Any Level</option>
+          <option value="">Any Level</option>
           <option value="fresher">Fresher / Entry</option>
           <option value="1-3">1–3 Years</option>
           <option value="3-5">3–5 Years</option>
@@ -232,21 +199,33 @@
         </select>
       </div>
     </div>
-    <div style="margin-top:18px">
+
+    <div style="margin-top:16px" class="filters-grid">
       <div class="fg">
-        <label>Keywords <span style="text-transform:none;font-style:italic;font-weight:300">(optional)</span></label>
-        <input type="text" id="keywords" placeholder="e.g. Supply Chain, SAP, Kinaxis">
+        <label>Job Type</label>
+        <div class="toggles">
+          <button class="tbtn active" data-type="fulltime">Full-time</button>
+          <button class="tbtn" data-type="internship">Internship</button>
+          <button class="tbtn" data-type="">Any</button>
+        </div>
       </div>
-    </div>
-    <div style="margin-top:4px">
-      <label style="font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;display:block;margin:16px 0 10px">Platforms</label>
-      <div class="platform-row" id="platformRow">
-        <div class="pchip on" data-p="indeed"><div class="dot"></div>Indeed</div>
-        <div class="pchip on" data-p="linkedin"><div class="dot"></div>LinkedIn</div>
-        <div class="pchip on" data-p="naukri"><div class="dot"></div>Naukri</div>
-        <div class="pchip on" data-p="internshala"><div class="dot"></div>Internshala</div>
-        <div class="pchip on" data-p="glassdoor"><div class="dot"></div>Glassdoor</div>
-        <div class="pchip on" data-p="wellfound"><div class="dot"></div>Wellfound</div>
+      <div class="fg">
+        <label>Posted Within</label>
+        <div class="toggles">
+          <button class="tbtn" data-age="3">3 hrs</button>
+          <button class="tbtn active" data-age="24">24 hrs</button>
+          <button class="tbtn" data-age="72">3 days</button>
+          <button class="tbtn" data-age="168">1 week</button>
+          <button class="tbtn" data-age="">Any time</button>
+        </div>
+      </div>
+      <div class="fg">
+        <label>No. of Results</label>
+        <select id="numResults">
+          <option value="10">10 jobs</option>
+          <option value="20" selected>20 jobs</option>
+          <option value="30">30 jobs</option>
+        </select>
       </div>
     </div>
   </div>
@@ -254,19 +233,17 @@
   <button class="search-btn" id="searchBtn">🔍 Find Matching Jobs</button>
   <div class="error" id="errorBox"></div>
 
-  <!-- Loading -->
   <div class="loading" id="loading">
     <div class="spinner"></div>
-    <div class="load-title">Searching across platforms...</div>
+    <div class="load-title">Searching real job listings...</div>
     <ul class="steps">
-      <li class="step" id="s1"><span id="s1i">○</span> Parsing resume & extracting skills</li>
-      <li class="step" id="s2"><span id="s2i">○</span> Searching Indeed & LinkedIn</li>
-      <li class="step" id="s3"><span id="s3i">○</span> Scanning Naukri & Internshala</li>
-      <li class="step" id="s4"><span id="s4i">○</span> Ranking by match score</li>
+      <li class="step" id="s1"><span id="s1i">○</span> Reading resume & extracting profile</li>
+      <li class="step" id="s2"><span id="s2i">○</span> Searching web for live job listings</li>
+      <li class="step" id="s3"><span id="s3i">○</span> AI ranking & match scoring</li>
+      <li class="step" id="s4"><span id="s4i">○</span> Generating why-fit explanations</li>
     </ul>
   </div>
 
-  <!-- Results -->
   <div class="results" id="results">
     <div class="results-hdr">
       <h2>Job Matches</h2>
@@ -275,60 +252,42 @@
     <div id="jobsList"></div>
   </div>
 
-  <footer>Built with Claude AI · Always verify listings on the original platform</footer>
+  <footer>Powered by Gemini AI + Google Search · Free · Always verify listings on the original platform</footer>
 </div>
 </div>
 
 <script>
 // ╔══════════════════════════════════════════════════════╗
-// ║  CONFIG — edit these values                          ║
+// ║  CONFIG — only thing you need to change              ║
 // ╚══════════════════════════════════════════════════════╝
-
-const ANTHROPIC_API_KEY = 'NOT_NEEDED'; // key is now stored in your Cloudflare Worker
-
-// ── YOUR WORKER URL ───────────────────────────────────
-// After deploying the Cloudflare Worker, paste your URL here:
-const WORKER_URL = 'https://soft-mouse-c981.k098-aditya.workers.dev/'; // e.g. https://resumematch.yourname.workers.dev
+const WORKER_URL = 'YOUR_WORKER_URL'; // e.g. https://resumematch.yourname.workers.dev
 
 // ── ACCESS CONTROL ────────────────────────────────────
-// STEP 1: Right now → set ALLOWLIST_ENABLED = false
-//         Everyone can use the tool, no login needed.
-//
-// STEP 2: When you want to restrict access →
-//         Set ALLOWLIST_ENABLED = true
-//         Add allowed email addresses to ALLOWED_EMAILS
-//         Users not in the list will see a blocked screen
-//         (You'll need to add a login method at that point —
-//          simplest option: ask users to enter their email
-//          and check it against this list)
-
+// false = open to everyone (current mode)
+// true  = show blocked screen (add login later when needed)
 const ALLOWLIST_ENABLED = false;
-
-const ALLOWED_EMAILS = [
+const ALLOWED_EMAILS    = [
   // 'friend@gmail.com',
-  // 'colleague@company.com',
 ];
 
-// ── ACCESS CHECK (runs on load) ───────────────────────
-(function checkAccess() {
-  if (!ALLOWLIST_ENABLED) return; // open access, skip
-  // When ALLOWLIST_ENABLED is true, show blocked screen
-  // Replace this with your login flow at that time
-  document.getElementById('appScreen').classList.remove('active');
-  document.getElementById('accessDeniedScreen').classList.add('active');
+(function() {
+  if (!ALLOWLIST_ENABLED) return;
+  document.getElementById('appScreen').style.display = 'none';
+  document.getElementById('accessDeniedScreen').classList.add('show');
 })();
 
 // ╔══════════════════════════════════════════════════════╗
-// ║  RESUME UPLOAD                                       ║
+// ║  STATE                                               ║
 // ╚══════════════════════════════════════════════════════╝
 let resumeText = '';
-let jobType = 'job';
-let platforms = new Set(['indeed','linkedin','naukri','internshala','glassdoor','wellfound']);
+let jobType    = 'fulltime';
+let postedAge  = '24';
 
+// ╔══════════════════════════════════════════════════════╗
+// ║  FILE HANDLING                                       ║
+// ╚══════════════════════════════════════════════════════╝
 const fileInput  = document.getElementById('resumeFile');
 const uploadZone = document.getElementById('uploadZone');
-const fileBadge  = document.getElementById('fileBadge');
-const fileNameEl = document.getElementById('fileName');
 
 fileInput.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
 uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
@@ -339,73 +298,52 @@ uploadZone.addEventListener('drop', e => {
 });
 
 async function handleFile(file) {
-  fileNameEl.textContent = file.name;
-  fileBadge.classList.add('show');
-  setPillsLoading();
-
+  document.getElementById('fileName').textContent = file.name;
+  document.getElementById('fileBadge').classList.add('show');
+  document.getElementById('resumePills').innerHTML = '<span class="pill">⏳ Reading...</span>';
+  document.getElementById('resumePreview').classList.add('show');
   try {
     if (file.type === 'text/plain') {
       resumeText = await file.text();
     } else if (file.type === 'application/pdf') {
       resumeText = await extractPDF(file);
-    } else if (
-      file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
-      file.type === 'application/msword' ||
-      file.name.endsWith('.docx') || file.name.endsWith('.doc')
-    ) {
-      resumeText = await extractDOCX(file);
     } else {
-      // fallback — try reading as text
-      resumeText = await file.text();
+      resumeText = await extractDOCX(file);
     }
     showPreview(resumeText);
   } catch(e) {
-    document.getElementById('resumePills').innerHTML = '<span class="pill" style="color:var(--accent2)">⚠ Could not read file — paste text instead</span>';
-    document.getElementById('resumePreview').classList.add('show');
+    document.getElementById('resumePills').innerHTML = '<span class="pill" style="color:var(--accent2)">⚠ Could not read — paste text instead</span>';
   }
 }
 
-function setPillsLoading() {
-  document.getElementById('resumePills').innerHTML = '<span class="pill">⏳ Reading file...</span>';
-  document.getElementById('resumePreview').classList.add('show');
-}
-
-// PDF extraction using PDF.js (fully client-side, no API call)
 async function extractPDF(file) {
   pdfjsLib.GlobalWorkerOptions.workerSrc =
     'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-  const arrayBuffer = await file.arrayBuffer();
-  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-  let fullText = '';
+  const pdf = await pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
+  let text = '';
   for (let i = 1; i <= pdf.numPages; i++) {
     const page = await pdf.getPage(i);
-    const content = await page.getTextContent();
-    const pageText = content.items.map(item => item.str).join(' ');
-    fullText += pageText + '\n';
+    const c = await page.getTextContent();
+    text += c.items.map(it => it.str).join(' ') + '\n';
   }
-  if (!fullText.trim()) throw new Error('Empty PDF');
-  return fullText;
+  if (!text.trim()) throw new Error('empty');
+  return text;
 }
 
-// DOCX extraction using mammoth.js (fully client-side)
 async function extractDOCX(file) {
-  const arrayBuffer = await file.arrayBuffer();
-  const result = await mammoth.extractRawText({ arrayBuffer });
-  if (!result.value.trim()) throw new Error('Empty DOCX');
-  return result.value;
+  const r = await mammoth.extractRawText({ arrayBuffer: await file.arrayBuffer() });
+  if (!r.value.trim()) throw new Error('empty');
+  return r.value;
 }
 
 document.getElementById('removeFile').addEventListener('click', () => {
   resumeText = ''; fileInput.value = '';
-  fileBadge.classList.remove('show');
+  document.getElementById('fileBadge').classList.remove('show');
   document.getElementById('resumePreview').classList.remove('show');
 });
-
 document.getElementById('pasteToggle').addEventListener('click', () =>
   document.getElementById('pasteArea').classList.toggle('show')
 );
-
 document.getElementById('pasteArea').addEventListener('input', e => {
   resumeText = e.target.value;
   if (resumeText.length > 40) showPreview(resumeText);
@@ -414,167 +352,167 @@ document.getElementById('pasteArea').addEventListener('input', e => {
 function showPreview(text) {
   const kw = ['Python','SQL','Java','JavaScript','React','Excel','SAP','Power BI','Tableau',
     'AWS','Azure','Operations','Supply Chain','Kinaxis','MBA','B.Tech','Analytics',
-    'Machine Learning','Salesforce','Figma','Jira','AutoCAD','Lean','Six Sigma'];
+    'Machine Learning','Salesforce','Figma','Jira','Lean','Six Sigma','AutoCAD','Finance'];
   const found = kw.filter(k => text.toLowerCase().includes(k.toLowerCase())).slice(0,12);
-  document.getElementById('resumePills').innerHTML = found.map(k => `<span class="pill">${k}</span>`).join('');
+  document.getElementById('resumePills').innerHTML =
+    found.length ? found.map(k => `<span class="pill">${k}</span>`).join('')
+                 : '<span class="pill">✓ Resume loaded</span>';
   document.getElementById('resumePreview').classList.add('show');
 }
 
-// Type toggles
-document.querySelectorAll('.toggle-btn').forEach(btn => {
+// ╔══════════════════════════════════════════════════════╗
+// ║  TOGGLE BUTTONS                                      ║
+// ╚══════════════════════════════════════════════════════╝
+document.querySelectorAll('[data-type]').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('[data-type]').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     jobType = btn.dataset.type;
   });
 });
-
-// Platform chips
-document.querySelectorAll('.pchip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    const p = chip.dataset.p;
-    if (platforms.has(p)) { platforms.delete(p); chip.classList.remove('on'); }
-    else { platforms.add(p); chip.classList.add('on'); }
+document.querySelectorAll('[data-age]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-age]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    postedAge = btn.dataset.age;
   });
 });
 
 // ╔══════════════════════════════════════════════════════╗
-// ║  CLAUDE API                                          ║
+// ║  WORKER CALL                                         ║
 // ╚══════════════════════════════════════════════════════╝
-async function claude(messages, webSearch = false) {
-  if (WORKER_URL === 'YOUR_WORKER_URL') {
-    throw new Error('Paste your Cloudflare Worker URL into WORKER_URL near the top of this file.');
+async function callWorker(prompt, useSearch = false) {
+  if (WORKER_URL === 'https://soft-mouse-c981.k098-aditya.workers.dev/L') {
+    throw new Error('Paste your Cloudflare Worker URL into WORKER_URL at the top of the script.');
   }
-  const body = { model:'claude-sonnet-4-20250514', max_tokens:4000, messages };
-  if (webSearch) body.tools = [{ type:'web_search_20250305', name:'web_search' }];
   const res = await fetch(WORKER_URL, {
-    method:'POST',
-    headers:{ 'Content-Type':'application/json' },
-    body: JSON.stringify(body)
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ prompt, useSearch })
   });
-  if (!res.ok) {
-    const e = await res.json().catch(() => ({}));
-    throw new Error(`API ${res.status}: ${e?.error?.message || 'Unknown error'}`);
-  }
-  return res.json();
-}
-
-function textFrom(data) {
-  return (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('\n');
-}
-
-async function agenticSearch(messages) {
-  let msgs = [...messages];
-  for (let i = 0; i < 8; i++) {
-    const data = await claude(msgs, true);
-    const toolBlocks = (data.content || []).filter(b => b.type === 'tool_use');
-    if (data.stop_reason === 'end_turn' || !toolBlocks.length) return textFrom(data);
-    msgs.push({ role:'assistant', content: data.content });
-    msgs.push({ role:'user', content: toolBlocks.map(t => ({
-      type:'tool_result', tool_use_id:t.id,
-      content:'Search done. Now generate the job listings JSON.'
-    }))});
-  }
-  throw new Error('Search exceeded max iterations');
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || `Worker error ${res.status}`);
+  return data.text || '';
 }
 
 // ╔══════════════════════════════════════════════════════╗
-// ║  JOB SEARCH                                          ║
+// ║  MAIN SEARCH                                         ║
 // ╚══════════════════════════════════════════════════════╝
 document.getElementById('searchBtn').addEventListener('click', run);
 
 async function run() {
-  const text = resumeText || document.getElementById('pasteArea').value;
-  if (!text || text.length < 20) { showErr('Please upload a resume or paste resume text first.'); return; }
-
-  const location = document.getElementById('locationInput').value || 'India';
+  const keywords = document.getElementById('keywords').value.trim();
+  const location = document.getElementById('locationInput').value.trim() || 'India';
   const exp      = document.getElementById('expLevel').value;
-  const kw       = document.getElementById('keywords').value;
-  const plist    = [...platforms].join(', ');
-  const typeLabel = jobType === 'both' ? 'jobs and internships' : jobType === 'internship' ? 'internships' : 'full-time jobs';
+  const num      = parseInt(document.getElementById('numResults').value) || 20;
+  const typeLabel = jobType === 'internship' ? 'internships' : jobType === 'fulltime' ? 'full-time jobs' : 'jobs and internships';
+  const ageLabel  = postedAge ? `posted in the last ${postedAge} hours` : 'any posting date';
+
+  if (!resumeText && !keywords) {
+    showErr('Please upload a resume OR enter keywords to search.'); return;
+  }
 
   hideErr();
   document.getElementById('loading').classList.add('show');
   document.getElementById('results').classList.remove('show');
   document.getElementById('searchBtn').disabled = true;
-  animateSteps();
+  [1,2,3,4].forEach(n => setStep(n, ''));
 
   try {
-    // Step 1 — extract profile
-    const profileData = await claude([{
-      role:'user',
-      content:`Analyze this resume.\n\n${text.substring(0,4000)}\n\nReturn ONLY valid JSON (no markdown fences):\n{"name":"","title":"","currentRole":"","company":"","totalExp":"","education":"","skills":[],"tools":[],"industries":[],"achievements":[],"certifications":[],"strengths":[],"targetRoles":[],"summary":""}`
-    }]);
-    let profile = { title:'Professional', skills:[], tools:[], achievements:[], targetRoles:[], summary:'' };
-    try {
-      const pt = textFrom(profileData);
-      const m  = pt.match(/\{[\s\S]*\}/);
-      if (m) profile = { ...profile, ...JSON.parse(m[0]) };
-    } catch(e) {}
-
-    // Update preview pills
-    const tags = [
-      profile.name     && `👤 ${profile.name}`,
-      profile.title    && `💼 ${profile.title}`,
-      profile.totalExp && `⏱ ${profile.totalExp}`,
-      ...(profile.skills||[]).slice(0,5),
-      ...(profile.tools||[]).slice(0,3)
-    ].filter(Boolean);
-    if (tags.length) {
-      document.getElementById('resumePills').innerHTML = tags.map(k => `<span class="pill">${k}</span>`).join('');
-      document.getElementById('resumePreview').classList.add('show');
+    // ── Step 1: Extract profile from resume ──
+    let profile = null;
+    setStep(1, 'active');
+    if (resumeText) {
+      const profileText = await callWorker(
+        `Analyze this resume. Return ONLY valid JSON, no markdown fences:\n{"name":"","title":"","skills":[],"tools":[],"experience":"","education":"","targetRoles":[],"summary":""}\n\nRESUME:\n${resumeText.substring(0,4000)}`
+      );
+      try { const m = profileText.match(/\{[\s\S]*\}/); if (m) profile = JSON.parse(m[0]); } catch(e) {}
+      if (profile) {
+        const tags = [
+          profile.name       && `👤 ${profile.name}`,
+          profile.title      && `💼 ${profile.title}`,
+          profile.experience && `⏱ ${profile.experience}`,
+          ...(profile.skills||[]).slice(0,5),
+          ...(profile.tools||[]).slice(0,3)
+        ].filter(Boolean);
+        if (tags.length) document.getElementById('resumePills').innerHTML = tags.map(k=>`<span class="pill">${k}</span>`).join('');
+      }
     }
+    setStep(1, 'done');
 
-    // Step 2 — search jobs
-    const prompt = `You are an expert career counsellor. Find highly personalised ${typeLabel} for this candidate.
+    // ── Step 2 & 3: Search + rank in one Gemini call with Google Search grounding ──
+    setStep(2, 'active');
 
-CANDIDATE:
-Name: ${profile.name || 'Candidate'}
-Role: ${profile.title} | Last: ${profile.currentRole || 'N/A'} at ${profile.company || 'N/A'}
-Experience: ${profile.totalExp || exp} | Education: ${profile.education || 'N/A'}
-Skills: ${(profile.skills||[]).join(', ')}
-Tools: ${(profile.tools||[]).join(', ')}
-Achievements: ${(profile.achievements||[]).join(' | ')}
-Certifications: ${(profile.certifications||[]).join(', ')}
-Target Roles: ${(profile.targetRoles||[]).join(', ')}
-Summary: ${profile.summary}
+    const searchQuery = keywords || (profile ? (profile.targetRoles||[])[0] || profile.title || 'jobs' : 'jobs');
 
-PARAMETERS:
-Location: ${location} | Type: ${typeLabel} | Level: ${exp}
-Keywords: ${kw || 'none'} | Platforms: ${plist}
+    const candidateCtx = profile
+      ? `Name: ${profile.name||'Candidate'} | Current/Target Role: ${profile.title||searchQuery} | Experience: ${profile.experience||exp||'N/A'} | Skills: ${(profile.skills||[]).join(', ')} | Tools: ${(profile.tools||[]).join(', ')} | Education: ${profile.education||''} | Target Roles: ${(profile.targetRoles||[]).join(', ')} | Summary: ${profile.summary||''}`
+      : `Looking for: ${searchQuery} | Location: ${location} | Experience: ${exp||'any'}`;
 
-Search for current openings matching this candidate's background. Return ONLY a JSON array — no markdown, no extra text, start with [ end with ]:
-[{"title":"","company":"","location":"City, India","platform":"linkedin","salary":"₹X-Y LPA","posted":"X days ago","type":"Full-time","description":"2 sentence description.","skills":["s1","s2"],"match":91,"whyFit":"2-3 sentences referencing THIS candidate's specific skills/experience from their resume and why it maps to this role.","applyUrl":"https://platform-url","emoji":"🏢"}]
+    const searchPrompt = `You are a career counsellor helping a candidate find jobs. Search the web RIGHT NOW for current ${typeLabel} openings matching this candidate.
 
-Platform URL formats:
-linkedin     → https://www.linkedin.com/jobs/search/?keywords=ROLE&location=LOCATION
-indeed       → https://in.indeed.com/jobs?q=ROLE&l=LOCATION
-naukri       → https://www.naukri.com/ROLE-jobs-in-LOCATION
-internshala  → https://internshala.com/internships/ROLE-internship-in-LOCATION
-glassdoor    → https://www.glassdoor.co.in/Job/LOCATION-ROLE-jobs.htm
-wellfound    → https://wellfound.com/jobs
+CANDIDATE PROFILE:
+${candidateCtx}
 
-Rules: real companies · realistic Indian salaries · match 70-98 · sort by match desc · 12-15 results`;
+SEARCH PARAMETERS:
+- Keywords: ${searchQuery}
+- Location: ${location}
+- Job type: ${typeLabel}
+- Experience: ${exp || 'any level'}
+- Posted: ${ageLabel}
+- Number of results needed: ${num}
 
-    const raw = await agenticSearch([{ role:'user', content:prompt }]);
+Search Google for real, currently open ${typeLabel} for "${searchQuery}" in "${location}". Look on LinkedIn, Indeed, Naukri, Internshala, Glassdoor, Wellfound, and company career pages.
 
-    // Parse JSON with 3 fallbacks
+Return ONLY a valid JSON array — no markdown, no explanation, start with [ end with ]:
+[{
+  "title": "Exact job title",
+  "company": "Company name",
+  "location": "City, State",
+  "description": "2-3 sentence description of the role and responsibilities.",
+  "salary": "₹X-Y LPA or blank if unknown",
+  "type": "Full-time or Internship",
+  "posted": "X days ago or today",
+  "source": "LinkedIn / Indeed / Naukri / etc",
+  "applyUrl": "real direct URL to this job posting",
+  "match": 85,
+  "whyFit": "2 sentences referencing THIS candidate's specific skills/experience and why they match this exact role.",
+  "skills": ["skill1", "skill2", "skill3"]
+}]
+
+Rules:
+- Real companies and real job postings only
+- Real working apply URLs
+- match score 60-98, sort by match descending
+- whyFit must reference actual candidate details, not generic text
+- If no resume provided, base whyFit on the keywords`;
+
+    const jobsText = await callWorker(searchPrompt, true); // useSearch=true enables Google grounding
+    setStep(2, 'done');
+    setStep(3, 'active');
+
+    // Parse JSON — 3 fallback attempts
     let jobs = null;
-    const try1 = raw.match(/\[[\s\S]*\]/);
+    const try1 = jobsText.match(/\[[\s\S]*\]/);
     if (try1) { try { jobs = JSON.parse(try1[0]); } catch(e) {} }
     if (!jobs) {
-      const clean = raw.replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
+      const clean = jobsText.replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
       const try2  = clean.match(/\[[\s\S]*\]/);
       if (try2) { try { jobs = JSON.parse(try2[0]); } catch(e) {} }
     }
     if (!jobs) {
-      const fix = await claude([{ role:'user', content:`Extract and return ONLY the JSON array from this:\n\n${raw.substring(0,3000)}` }]);
-      const ft  = textFrom(fix);
-      const try3 = ft.match(/\[[\s\S]*\]/);
+      // Ask Gemini to fix the JSON
+      const fixed = await callWorker(`Extract and return ONLY the JSON array from this text, no markdown:\n\n${jobsText.substring(0,3000)}`);
+      const try3  = fixed.match(/\[[\s\S]*\]/);
       if (try3) { try { jobs = JSON.parse(try3[0]); } catch(e) {} }
     }
-    if (!jobs || !jobs.length) throw new Error('Could not parse job results. Try again.');
+    if (!jobs || !jobs.length) throw new Error('No jobs found. Try different keywords or a broader location.');
 
+    // Ensure aiSkills field exists
+    jobs = jobs.map(j => ({ ...j, aiSkills: j.skills || [] }));
+
+    setStep(3, 'done');
+    setStep(4, 'done');
     document.getElementById('loading').classList.remove('show');
     renderJobs(jobs);
 
@@ -585,60 +523,65 @@ Rules: real companies · realistic Indian salaries · match 70-98 · sort by mat
   }
 }
 
+// ╔══════════════════════════════════════════════════════╗
+// ║  RENDER                                              ║
+// ╚══════════════════════════════════════════════════════╝
 function renderJobs(jobs) {
   document.getElementById('resultsCount').textContent = `${jobs.length} results`;
-  document.getElementById('jobsList').innerHTML = jobs.map((j, i) => `
+  document.getElementById('jobsList').innerHTML = jobs.map((j,i) => {
+    const isNew = j.posted && /hour|minute|just now/i.test(j.posted);
+    const plat  = detectPlatform(j.source||'');
+    return `
     <div class="job-card" style="animation-delay:${i*0.04}s">
       <div class="job-top">
-        <div class="job-logo">${x(j.emoji||'🏢')}</div>
+        <div class="job-logo">${platformEmoji(plat)}</div>
         <div class="job-info">
           <div class="job-title">${x(j.title)}</div>
-          <div class="job-company">${x(j.company)}</div>
+          <div class="job-company">${x(j.company)}${j.location ? ' · '+x(j.location) : ''}</div>
         </div>
-        <span class="pbadge pb-${j.platform||'other'}">${x(j.platform||'other')}</span>
+        <span class="pbadge pb-${plat}">${x(j.source||plat)}</span>
       </div>
       <div class="job-meta">
-        <span class="chip">📍 ${x(j.location)}</span>
-        <span class="chip">⏱ ${x(j.type)}</span>
+        ${j.type   ? `<span class="chip">⏱ ${x(j.type)}</span>` : ''}
         ${j.salary ? `<span class="chip green">💰 ${x(j.salary)}</span>` : ''}
         ${j.match  ? `<span class="chip purple">⚡ ${j.match}% match</span>` : ''}
+        ${isNew    ? `<span class="chip new">🟢 New</span>` : ''}
       </div>
-      ${(j.skills||[]).length ? `<div class="skill-tags">${(j.skills||[]).slice(0,4).map(s=>`<span class="stag">${x(s)}</span>`).join('')}</div>` : ''}
-      <p class="job-desc">${x(j.description||'')}</p>
+      ${j.aiSkills.length ? `<div class="pills" style="margin-bottom:10px">${j.aiSkills.slice(0,4).map(s=>`<span class="pill">${x(s)}</span>`).join('')}</div>` : ''}
+      ${j.description ? `<p class="job-desc">${x(j.description)}</p>` : ''}
       <div class="job-footer">
-        <a class="apply-btn" href="${j.applyUrl||'#'}" target="_blank" rel="noopener">Apply Now →</a>
-        <span class="posted">🕐 ${x(j.posted||'Recently')}</span>
+        <a class="apply-btn" href="${x(j.applyUrl||j.link||'#')}" target="_blank" rel="noopener">Apply Now →</a>
+        <span class="posted">🕐 ${x(j.posted||'Recently posted')}</span>
       </div>
       ${j.whyFit ? `<div class="why-fit"><span class="why-fit-lbl">✦ Why this fits you</span>${x(j.whyFit)}</div>` : ''}
-    </div>`).join('');
+    </div>`;
+  }).join('');
 
   document.getElementById('results').classList.add('show');
   document.getElementById('searchBtn').disabled = false;
   document.getElementById('results').scrollIntoView({ behavior:'smooth', block:'start' });
 }
 
+function detectPlatform(s) {
+  s = s.toLowerCase();
+  if (s.includes('linkedin'))  return 'linkedin';
+  if (s.includes('indeed'))    return 'indeed';
+  if (s.includes('naukri'))    return 'naukri';
+  if (s.includes('google'))    return 'google';
+  return 'other';
+}
+function platformEmoji(p) {
+  return {linkedin:'💼',indeed:'🔍',naukri:'📋',google:'🌐',other:'🏢'}[p]||'🏢';
+}
 function x(s) {
   return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
-function showErr(msg) { const b = document.getElementById('errorBox'); b.textContent = msg; b.classList.add('show'); }
+function showErr(msg) { const b=document.getElementById('errorBox'); b.textContent=msg; b.classList.add('show'); }
 function hideErr()    { document.getElementById('errorBox').classList.remove('show'); }
-
-function animateSteps() {
-  const ids = ['s1','s2','s3','s4'];
-  ids.forEach((id, i) => {
-    const el = document.getElementById(id);
-    const ic = document.getElementById(id+'i');
-    el.className = 'step';
-    ic.textContent = '○';
-    setTimeout(() => {
-      if (i > 0) {
-        document.getElementById(ids[i-1]).className = 'step done';
-        document.getElementById(ids[i-1]+'i').textContent = '✓';
-      }
-      el.className = 'step active';
-      ic.textContent = '●';
-    }, i * 1800);
-  });
+function setStep(n, state) {
+  const el=document.getElementById('s'+n), ic=document.getElementById('s'+n+'i');
+  el.className='step'+(state?' '+state:'');
+  ic.textContent = state==='done'?'✓':state==='active'?'●':'○';
 }
 </script>
 </body>
