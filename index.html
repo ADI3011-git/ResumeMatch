@@ -252,7 +252,7 @@
     <div id="jobsList"></div>
   </div>
 
-  <footer>Powered by Gemini AI + Google Search · Free · Always verify listings on the original platform</footer>
+  <footer>Powered by Gemini AI + Google Search · Always verify listings on the original platform</footer>
 </div>
 </div>
 
@@ -260,7 +260,7 @@
 // ╔══════════════════════════════════════════════════════╗
 // ║  CONFIG — only thing you need to change              ║
 // ╚══════════════════════════════════════════════════════╝
-const WORKER_URL = 'https://soft-mouse-c981.k098-aditya.workers.dev'; // e.g. https://resumematch.yourname.workers.dev
+const GEMINI_API_KEY = 'AIzaSyC8DsG-tRxW8ZmjoMN85dMkeupo-af5p3o'; // from aistudio.google.com
 
 // ── ACCESS CONTROL ────────────────────────────────────
 // false = open to everyone (current mode)
@@ -381,18 +381,32 @@ document.querySelectorAll('[data-age]').forEach(btn => {
 // ╔══════════════════════════════════════════════════════╗
 // ║  WORKER CALL                                         ║
 // ╚══════════════════════════════════════════════════════╝
-async function callWorker(prompt, useSearch = false) {
-  if (WORKER_URL === 'YOUR_WORKER_URL') {
-    throw new Error('Paste your Cloudflare Worker URL into WORKER_URL at the top of the script.');
+async function callGemini(prompt, useSearch = false) {
+  if (GEMINI_API_KEY === 'YOUR_GEMINI_API_KEY') {
+    throw new Error('Open this HTML file and replace YOUR_GEMINI_API_KEY with your key from aistudio.google.com');
   }
-  const res = await fetch(WORKER_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ prompt, useSearch })
-  });
+
+  const payload = {
+    contents: [{ parts: [{ text: prompt }] }],
+    generationConfig: { temperature: 0.2, maxOutputTokens: 8192 }
+  };
+
+  if (useSearch) {
+    payload.tools = [{ google_search: {} }];
+  }
+
+  const res = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }
+  );
+
   const data = await res.json();
-  if (!res.ok) throw new Error(data.error || `Worker error ${res.status}`);
-  return data.text || '';
+  if (data.error) throw new Error(`Gemini: ${data.error.message}`);
+  return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
 }
 
 // ╔══════════════════════════════════════════════════════╗
@@ -423,7 +437,7 @@ async function run() {
     let profile = null;
     setStep(1, 'active');
     if (resumeText) {
-      const profileText = await callWorker(
+      const profileText = await callGemini(
         `Analyze this resume. Return ONLY valid JSON, no markdown fences:\n{"name":"","title":"","skills":[],"tools":[],"experience":"","education":"","targetRoles":[],"summary":""}\n\nRESUME:\n${resumeText.substring(0,4000)}`
       );
       try { const m = profileText.match(/\{[\s\S]*\}/); if (m) profile = JSON.parse(m[0]); } catch(e) {}
@@ -487,7 +501,7 @@ Rules:
 - whyFit must reference actual candidate details, not generic text
 - If no resume provided, base whyFit on the keywords`;
 
-    const jobsText = await callWorker(searchPrompt, true); // useSearch=true enables Google grounding
+    const jobsText = await callGemini(searchPrompt, true); // useSearch=true enables Google grounding
     setStep(2, 'done');
     setStep(3, 'active');
 
@@ -502,7 +516,7 @@ Rules:
     }
     if (!jobs) {
       // Ask Gemini to fix the JSON
-      const fixed = await callWorker(`Extract and return ONLY the JSON array from this text, no markdown:\n\n${jobsText.substring(0,3000)}`);
+      const fixed = await callGemini(`Extract and return ONLY the JSON array from this text, no markdown:\n\n${jobsText.substring(0,3000)}`);
       const try3  = fixed.match(/\[[\s\S]*\]/);
       if (try3) { try { jobs = JSON.parse(try3[0]); } catch(e) {} }
     }
